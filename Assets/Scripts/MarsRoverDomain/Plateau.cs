@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace MarsRoverDomain
 {
@@ -7,10 +9,13 @@ namespace MarsRoverDomain
 		public int Width { get; }
 		public int Height { get; }
 		
-		internal Plateau(int width, int height)
+		public IEnumerable<Rover> Rovers { get; }
+		
+		internal Plateau(int width, int height, IEnumerable<Rover> rovers)
 		{
 			Width = width;
 			Height = height;
+			Rovers = rovers ?? new List<Rover>();
 		}
 	}
 }

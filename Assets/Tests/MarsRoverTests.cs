@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
+using System.Numerics;
 using MarsRoverDomain;
 using NUnit.Framework;
+using UnityEngine;
 using UnityEngine.TestTools;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Tests
 {
@@ -41,12 +45,26 @@ namespace Tests
 		[TestCase("5 5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM")]
 		[TestCase("55\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM")]
 		[TestCase("a b\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM")]
-		public void Plateau_throws_on_invalid_build(string input)
+		public void Invalid_builds_throw(string input)
 		{
 			Assert.Throws<ArgumentException>(() =>
 			{
 				var plateau = new MarsRoverBuilder(input).Build();
 			});
+		}
+
+		[Test]
+		public void Rover_initial_positions_are_set_up_correctly_on_build()
+		{
+			// arrange
+			var input = "5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM";
+			var firstRoverPosition = new Position(1 , 2, Position.Facing.N);
+			
+			// act
+			var plateau = new MarsRoverBuilder(input).Build();
+			
+			// assert
+			Assert.AreEqual(firstRoverPosition, plateau.Rovers.First().Position);
 		}
 
 		// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
