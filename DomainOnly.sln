@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainOnly", "DomainOnly\DomainOnly.csproj", "{74920DE9-D6F2-4E59-86E7-13BCB4A3D871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTestsOnly", "DomainTestsOnly\DomainTestsOnly.csproj", "{DDB6F5DB-C069-4693-B40C-A20C937A2B58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74920DE9-D6F2-4E59-86E7-13BCB4A3D871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74920DE9-D6F2-4E59-86E7-13BCB4A3D871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74920DE9-D6F2-4E59-86E7-13BCB4A3D871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74920DE9-D6F2-4E59-86E7-13BCB4A3D871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB6F5DB-C069-4693-B40C-A20C937A2B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB6F5DB-C069-4693-B40C-A20C937A2B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB6F5DB-C069-4693-B40C-A20C937A2B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB6F5DB-C069-4693-B40C-A20C937A2B58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

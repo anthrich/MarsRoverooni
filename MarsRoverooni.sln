@@ -1,0 +1,31 @@
+﻿Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{27D532C1-51F2-A0B8-6C75-578B8CC50D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverDomain", "MarsRoverDomain.csproj", "{A034C739-CEAB-83D3-0F2A-FFE304E42BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI.csproj", "{7AC61CB2-95D5-E1D4-D704-B1733A5ACD9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27D532C1-51F2-A0B8-6C75-578B8CC50D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D532C1-51F2-A0B8-6C75-578B8CC50D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D532C1-51F2-A0B8-6C75-578B8CC50D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D532C1-51F2-A0B8-6C75-578B8CC50D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A034C739-CEAB-83D3-0F2A-FFE304E42BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A034C739-CEAB-83D3-0F2A-FFE304E42BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A034C739-CEAB-83D3-0F2A-FFE304E42BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A034C739-CEAB-83D3-0F2A-FFE304E42BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC61CB2-95D5-E1D4-D704-B1733A5ACD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC61CB2-95D5-E1D4-D704-B1733A5ACD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC61CB2-95D5-E1D4-D704-B1733A5ACD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC61CB2-95D5-E1D4-D704-B1733A5ACD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
