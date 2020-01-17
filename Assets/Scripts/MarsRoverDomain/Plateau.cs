@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarsRoverDomain
 {
@@ -8,6 +9,8 @@ namespace MarsRoverDomain
 	{
 		public int Width { get; }
 		public int Height { get; }
+
+		private readonly List<Rover> _simulatedRovers;
 		
 		public IEnumerable<Rover> Rovers { get; }
 		
@@ -16,14 +19,22 @@ namespace MarsRoverDomain
 			Width = width;
 			Height = height;
 			Rovers = rovers ?? new List<Rover>();
+			_simulatedRovers = new List<Rover>();
 		}
 
-		public void Simulate()
+		public bool Simulate(int steps = 0)
 		{
-			foreach (var rover in Rovers)
+			
+			if (steps < 1) steps = Rovers.Select(r => r.Commands.Count()).Aggregate((agg, val) => agg + val);
+			for (int i = 0; i < steps; i++)
 			{
-				rover.ExecuteCommands();
+				if(_simulatedRovers.Count() == Rovers.Count()) return false;
+				var rover = Rovers.Except(_simulatedRovers).First();
+				var roverCompleted = rover.ExecuteCommands(1);
+				if(roverCompleted) _simulatedRovers.Add(rover);
 			}
+
+			return true;
 		}
 	}
 }

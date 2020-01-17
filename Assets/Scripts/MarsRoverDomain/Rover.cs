@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarsRoverDomain
 {
@@ -8,6 +9,7 @@ namespace MarsRoverDomain
 	{
 		public Position Position { get; private set; }
 		public IEnumerable<Command> Commands { get; }
+		private int _executedCommandCount;
 
 		internal Rover(Position position, IEnumerable<Command> commands)
 		{
@@ -15,12 +17,16 @@ namespace MarsRoverDomain
 			Commands = commands ?? new List<Command>();
 		}
 
-		internal void ExecuteCommands()
+		internal bool ExecuteCommands(int number = 0)
 		{
-			foreach (var command in Commands)
+			if (number < 1) number = Commands.Count() - _executedCommandCount;
+			for (int i = 0; i < number; i++)
 			{
-				command.Execute(this, null);
+				Commands.ElementAt(_executedCommandCount + i).Execute(this, null);
+				_executedCommandCount += 1;
 			}
+
+			return Commands.Count() == _executedCommandCount;
 		}
 
 		public abstract class Command
