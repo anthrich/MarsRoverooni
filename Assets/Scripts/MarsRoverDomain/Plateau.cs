@@ -9,6 +9,8 @@ namespace MarsRoverDomain
 	{
 		public int Width { get; }
 		public int Height { get; }
+		
+		public int CurrentSimulationStep { get; private set; }
 
 		private readonly List<Rover> _simulatedRovers;
 		
@@ -32,6 +34,7 @@ namespace MarsRoverDomain
 				var rover = Rovers.Except(_simulatedRovers).First();
 				var roverCompleted = rover.ExecuteCommands(1);
 				if(roverCompleted) _simulatedRovers.Add(rover);
+				CurrentSimulationStep = CurrentSimulationStep + 1;
 			}
 
 			return true;

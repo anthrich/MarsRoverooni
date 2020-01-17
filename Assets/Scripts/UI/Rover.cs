@@ -12,6 +12,11 @@ namespace UI
 			SetRoverPosition();
 		}
 
+		private void Update()
+		{
+			SetRoverPosition();
+		}
+
 		private void SetRoverPosition()
 		{
 			if (RoverModel != null)

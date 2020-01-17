@@ -16,11 +16,16 @@ namespace UI
 			PopulateRovers();
 		}
 
+		public void NextStep()
+		{
+			GeneratedPlateau.Simulate(1);
+		}
+
 		private void PopulatePlateauCells()
 		{
-			for (int x = 0; x < GeneratedPlateau.Width; x++)
+			for (int x = 0; x <= GeneratedPlateau.Width; x++)
 			{
-				for (int y = 0; y < GeneratedPlateau.Height; y++)
+				for (int y = 0; y <= GeneratedPlateau.Height; y++)
 				{
 					var cell = Instantiate(PlateauCellPrefab, transform);
 					var plateauCell = cell.GetComponent<PlateauCell>();

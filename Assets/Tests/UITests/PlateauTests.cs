@@ -11,20 +11,6 @@ namespace Tests.UITests
 {
 	public class PlateauTests
 	{
-		[UnityTest]
-		public IEnumerator Plateaus_create_the_plateau_cells()
-		{
-			// arrange
-			var plateau = SetUpPlateau();
-			
-			// act
-			yield return new WaitForFixedUpdate();
-			
-			// assert
-			var cells = plateau.gameObject.GetComponentsInChildren(typeof(PlateauCell));
-			Assert.AreEqual(plateau.GeneratedPlateau.Height * plateau.GeneratedPlateau.Width, cells.Length);
-		}
-
 		private Plateau SetUpPlateau()
 		{
 			var gameObject = new GameObject("plateau");
@@ -39,6 +25,21 @@ namespace Tests.UITests
 			roverPrefab.AddComponent<Rover>();
 			plateau.RoverPrefab = roverPrefab;
 			return plateau;
+		}
+		
+		[UnityTest]
+		public IEnumerator Plateaus_add_cells()
+		{
+			// arrange
+			var plateau = SetUpPlateau();
+			
+			// act
+			yield return new WaitForFixedUpdate();
+			
+			// assert
+			var cells = plateau.gameObject.GetComponentsInChildren(typeof(PlateauCell)).OfType<PlateauCell>();
+			Assert.AreEqual(
+				(plateau.GeneratedPlateau.Width + 1) * (plateau.GeneratedPlateau.Height + 1),cells.Count());
 		}
 
 		[UnityTest]
@@ -111,6 +112,20 @@ namespace Tests.UITests
 				var rotation = r.transform.eulerAngles.z;
 				return Math.Abs(rotation - correctRotations[(int)r.RoverModel.Position.CurrentFacing]) < 0.1;
 			}));
+		}
+		
+		[UnityTest]
+		public IEnumerator NextStep_steps_forward_in_the_simulation()
+		{
+			// arrange
+			var plateau = SetUpPlateau();
+			yield return new WaitForFixedUpdate();
+			
+			// act
+			plateau.NextStep();
+			
+			// assert
+			Assert.AreEqual(1, plateau.GeneratedPlateau.CurrentSimulationStep);
 		}
 	}
 }
