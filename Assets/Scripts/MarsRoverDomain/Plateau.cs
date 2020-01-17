@@ -17,5 +17,13 @@ namespace MarsRoverDomain
 			Height = height;
 			Rovers = rovers ?? new List<Rover>();
 		}
+
+		public void Simulate()
+		{
+			foreach (var rover in Rovers)
+			{
+				rover.ExecuteCommands();
+			}
+		}
 	}
 }

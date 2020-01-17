@@ -31,8 +31,7 @@ namespace MarsRoverDomain
 			int.TryParse(positionValues[0], out var x);
 			int.TryParse(positionValues[1], out var y);
 			Enum.TryParse(positionValues[2], out Position.Facing facing);
-			
-			
+
 			return new Rover(new Position(x, y, facing), BuildCommands(secondLine));
 		}
 

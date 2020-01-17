@@ -36,10 +36,10 @@ namespace MarsRoverDomain
 
 		public enum Facing
 		{
-			N = 'N',
-			E = 'E',
-			S = 'S',
-			W = 'W'
+			N,
+			E,
+			S,
+			W
 		}
 	}
 }

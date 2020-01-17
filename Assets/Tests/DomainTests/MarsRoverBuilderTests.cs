@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using MarsRoverDomain;
 using MarsRoverDomain.RoverCommands;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
-using Vector2 = UnityEngine.Vector2;
 
-namespace Tests
+namespace Tests.DomainTests
 {
-	public class MarsRoverTests
+	public class MarsRoverBuilderTests
 	{
 		[Test]
 		[TestCase("5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM", 5)]
@@ -70,7 +65,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void Multiple_rovers_will_have_their_positions_set_on_built()
+		public void Multiple_rovers_will_have_their_positions_set_on_build()
 		{
 			// arrange
 			var input = "5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM\n\n1 5 S\n\nMMRMMRMRRM";
@@ -86,7 +81,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void Rovers_receive_their_commands_in_the_same_order_as_the_input()
+		public void Rovers_build_with_commands_in_the_same_order_as_the_input()
 		{
 			// arrange
 			var input = "5 5\n\n1 2 N\n\nLMRM";
@@ -104,16 +99,6 @@ namespace Tests
 			// assert
 			var actualCommandTypes = plateau.Rovers.First().Commands.Select(c => c.GetType()).ToList();
 			CollectionAssert.AreEqual(expectedCommandTypes, actualCommandTypes);
-		}
-
-		// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-		// `yield return null;` to skip a frame.
-		[UnityTest]
-		public IEnumerator MarsRoverTestsWithEnumeratorPasses()
-		{
-			// Use the Assert class to test conditions.
-			// Use yield to skip a frame.
-			yield return null;
 		}
 	}
 }
