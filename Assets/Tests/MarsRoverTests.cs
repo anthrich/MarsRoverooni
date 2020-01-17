@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using MarsRoverDomain;
+using MarsRoverDomain.RoverCommands;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -54,7 +56,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void Rover_initial_positions_are_set_up_correctly_on_build()
+		public void Rover_initial_positions_are_set_up_on_build()
 		{
 			// arrange
 			var input = "5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM";
@@ -65,6 +67,43 @@ namespace Tests
 			
 			// assert
 			Assert.AreEqual(firstRoverPosition, plateau.Rovers.First().Position);
+		}
+
+		[Test]
+		public void Multiple_rovers_will_have_their_positions_set_on_built()
+		{
+			// arrange
+			var input = "5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM\n\n1 5 S\n\nMMRMMRMRRM";
+			var secondRoverPosition = new Position(3, 3, Position.Facing.E);
+			var thirdRoverPosition = new Position(1, 5, Position.Facing.S);
+			var positions = new List<Position>() {secondRoverPosition, thirdRoverPosition};
+			
+			// act
+			var plateau = new MarsRoverBuilder(input).Build();
+			
+			// assert
+			CollectionAssert.AreEqual(plateau.Rovers.Skip(1).Select(r => r.Position).ToList(), positions);
+		}
+
+		[Test]
+		public void Rovers_receive_their_commands_in_the_same_order_as_the_input()
+		{
+			// arrange
+			var input = "5 5\n\n1 2 N\n\nLMRM";
+			var expectedCommandTypes = new List<Type>()
+			{
+				typeof(TurnLeftCommand),
+				typeof(MoveCommand),
+				typeof(TurnRightCommand),
+				typeof(MoveCommand)
+			};
+			
+			// act
+			var plateau = new MarsRoverBuilder(input).Build();
+			
+			// assert
+			var actualCommandTypes = plateau.Rovers.First().Commands.Select(c => c.GetType()).ToList();
+			CollectionAssert.AreEqual(expectedCommandTypes, actualCommandTypes);
 		}
 
 		// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
