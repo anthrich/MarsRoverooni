@@ -12,13 +12,31 @@ namespace UI
 		public void Start()
 		{
 			GeneratedPlateau = new MarsRoverBuilder("5 5\n\n1 2 N\n\nLMLMLMLMM\n\n3 3 E\n\nMMRMMRMRRM").Build();
+			PopulatePlateauCells();
+			PopulateRovers();
+		}
+
+		private void PopulatePlateauCells()
+		{
 			for (int x = 0; x < GeneratedPlateau.Width; x++)
 			{
 				for (int y = 0; y < GeneratedPlateau.Height; y++)
 				{
 					var cell = Instantiate(PlateauCellPrefab, transform);
-					cell.transform.position = new Vector3(x * 14, y * 14);
+					var plateauCell = cell.GetComponent<PlateauCell>();
+					plateauCell.RowPosition = x;
+					plateauCell.ColumnPosition = y;
 				}
+			}
+		}
+
+		private void PopulateRovers()
+		{
+			foreach (var roverModel in GeneratedPlateau.Rovers)
+			{
+				var roverObject = Instantiate(RoverPrefab, transform);
+				var rover = roverObject.GetComponent<Rover>();
+				rover.RoverModel = roverModel;
 			}
 		}
 	}
