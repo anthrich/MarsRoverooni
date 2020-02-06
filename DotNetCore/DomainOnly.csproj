@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>DotNetCore</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\MarsRoverBuilder.cs">
+        <Link>MarsRoverBuilder.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\Plateau.cs">
+        <Link>Plateau.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\Position.cs">
+        <Link>Position.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\Rover.cs">
+        <Link>Rover.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\RoverCommands\MoveCommand.cs">
+        <Link>MoveCommand.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\RoverCommands\TurnLeftCommand.cs">
+        <Link>TurnLeftCommand.cs</Link>
+      </Compile>
+      <Compile Include="..\Assets\Scripts\MarsRoverDomain\RoverCommands\TurnRightCommand.cs">
+        <Link>TurnRightCommand.cs</Link>
+      </Compile>
+      <Compile Remove="DomainOnlyTests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="DomainOnlyTests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="DomainOnlyTests\**" />
+    </ItemGroup>
+
+</Project>

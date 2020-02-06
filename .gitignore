@@ -62,4 +62,5 @@ crashlytics-build.properties
 .idea
 */bin
 */obj
-
+/DotNetCore/DomainOnlyTests/bin
+/DotNetCore/DomainOnlyTests/obj
